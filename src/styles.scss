@@ -1,0 +1,15 @@
+// @import '../node_modules/ag-grid-community/styles/ag-grid.min.css';
+// @import '../node_modules/ag-grid-community/styles/ag-theme-alpine.min.css';
+@import 'ag-grid-community/styles/ag-grid.min.css';
+@import 'ag-grid-community/styles/ag-theme-alpine.min.css';
+
+// .ag-theme-alpine {
+//   @include ag-theme-alpine();
+// }
+.date-picker-with{
+  width: 100% !important;
+}
+
+#wfe_Watermark{
+  display: none !important;
+}

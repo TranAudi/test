@@ -1,0 +1,32 @@
+<nz-modal
+  [(nzVisible)]="isVisible"
+  nzTitle="{{ 'send-comment-workflow.modal.title' | i18n }}"
+  (nzOnCancel)="handleCancel()"
+  (nzOnOk)="handleOk()"
+>
+  <ng-container *nzModalContent>
+    <form nz-form [formGroup]="form">
+      <!-- Ngày thực tế -->
+      <nz-form-item *ngIf="data.commandObject?.params?.includes('RequireDate')" class="form-item-flex">
+        <nz-form-label nzRequired> {{ 'send-comment-workflow.modal.label-date' | i18n }} {{ data.command }} </nz-form-label>
+        <nz-form-control nzErrorTip="{{ 'send-comment-workflow.modal.label-date.required' | i18n }}">
+          <nz-date-picker formControlName="actionDate" name="actionDate" nzFormat="dd/MM/yyyy"> </nz-date-picker>
+        </nz-form-control>
+      </nz-form-item>
+
+      <!-- Lý do -->
+      <nz-form-item *ngIf="data.commandObject?.params?.includes('RequireComment')" class="form-item-flex">
+        <nz-form-label nzRequired> {{ 'send-comment-workflow.modal.label' | i18n }} {{ data.command }} </nz-form-label>
+        <nz-form-control nzErrorTip="{{ 'send-comment-workflow.modal.label.required' | i18n }}">
+          <textarea
+            formControlName="commentary"
+            nz-input
+            [nzAutosize]="{ minRows: 2, maxRows: 5 }"
+            placeholder="{{ 'send-comment-workflow.modal.place-holder' | i18n }}"
+          >
+          </textarea>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </ng-container>
+</nz-modal>

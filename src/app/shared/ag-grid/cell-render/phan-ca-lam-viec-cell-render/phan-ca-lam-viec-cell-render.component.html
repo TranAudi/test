@@ -1,0 +1,22 @@
+<div class="cell-content" nz-row (mousemove)="onMouseMove()" (mouseleave)="onMouseLeave()">
+  <div>
+    <div style="text-align: center" class="wrap-content" *ngFor="let item of caLamViecs">
+      <span>{{ item.tenCa + ' (' + item.gioBatDauCa + ' - ' + item.gioKetThucCa + ')' }}</span>
+    </div>
+  </div>
+  <div *ngIf="isShowEdit" class="cell-content-button">
+    <a (click)="btnEditClickedHandler($event)"><span nz-icon nzType="edit" nzTheme="outline"></span></a>
+  </div>
+</div>
+<style>
+  .warp-content span {
+    text-align: center;
+  }
+  .warp-content {
+    height: 20px;
+  }
+  .cell-content {
+    display: flex;
+    justify-content: center;
+  }
+</style>

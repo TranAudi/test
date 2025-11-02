@@ -1,0 +1,118 @@
+<nz-modal
+  [(nzVisible)]="isVisible"
+  [nzTitle]="modalTitle"
+  [nzContent]="modalContent"
+  [nzFooter]="modalFooter"
+  nzMaskClosable="false"
+  nzWidth="800px"
+  (nzOnCancel)="handleCancel()"
+  [nzBodyStyle]="{ 'max-height': '80vh', 'overflow-y': 'auto' }"
+>
+  <ng-template #modalTitle>
+    <nz-row>
+      <nz-col [nzXs]="24" [nzSm]="24" [nzMd]="24" [nzLg]="24">
+        <nz-row>
+          <nz-col [nzXs]="24" [nzSm]="16" [nzMd]="16" [nzLg]="16"> {{ tittle }}</nz-col>
+          <nz-col [nzXs]="24" [nzSm]="8" [nzMd]="8" [nzLg]="8">
+            <button class="button-danger" nz-button nzType="primary" (click)="deleteMon()">
+              <span nz-icon nzType="delete" nzTheme="fill"></span>
+              Xóa
+            </button>
+            <button class="button-success" nz-button nzType="primary" (click)="addSv()">
+              <span nz-icon nzType="folder-add" nzTheme="fill"></span>
+              Thêm môn
+            </button>
+          </nz-col>
+        </nz-row>
+      </nz-col>
+    </nz-row>
+  </ng-template>
+
+  <ng-template #modalContent [formGroup]="form">
+    <div style="height: 400px; width: 100%" class="ag-theme-alpine">
+      <ag-grid-angular
+        class="ag-theme-custom"
+        style="width: 100%; height: calc(100vh - 520px)"
+        [rowData]="listMonHoc"
+        [columnDefs]="columnDefs"
+        [defaultColDef]="defaultColDef"
+        [rowSelection]="'multiple'"
+        [suppressRowClickSelection]="true"
+        (gridReady)="onGridReady($event, 'grid')"
+        [overlayLoadingTemplate]="overlayLoadingTemplateSv"
+        [overlayNoRowsTemplate]="overlayNoRowsTemplateSv"
+        [components]="frameworkComponents"
+        [excelStyles]="excelStyles"
+      >
+      </ag-grid-angular>
+      <app-ag-grid-pagination [grid]="grid" [filter]="filter"></app-ag-grid-pagination>
+    </div>
+  </ng-template>
+
+  <ng-template #modalFooter>
+    <button
+      nz-button
+      nzType="default"
+      class="btn-warning"
+      *ngIf="btnCancel.visible && btnCancel.grandAccess"
+      (click)="btnCancel.click($event)"
+    >
+      <i nz-icon nzType="close-circle" nzTheme="fill"></i>{{ btnCancel.title }}
+    </button>
+  </ng-template>
+</nz-modal>
+
+<nz-modal
+  [(nzVisible)]="isVisibleSv"
+  [nzTitle]="modalTitleAddSv"
+  [nzContent]="modalContentAddSv"
+  [nzFooter]="modalFooterAddSv"
+  nzMaskClosable="false"
+  nzWidth="700px"
+  (nzOnCancel)="handleCancelAddSv()"
+  [nzBodyStyle]="{ 'max-height': '80vh', 'overflow-y': 'auto' }"
+>
+  <ng-template #modalTitleAddSv>
+    <nz-row>
+      <nz-col [nzXs]="24" [nzSm]="24" [nzMd]="24" [nzLg]="24">
+        <nz-row>
+          <nz-col [nzXs]="16" [nzSm]="16" [nzMd]="16" [nzLg]="18"> {{ titleAdd }}</nz-col>
+        </nz-row>
+      </nz-col>
+    </nz-row>
+  </ng-template>
+
+  <ng-template #modalContentAddSv [formGroup]="formSv">
+    <div style="height: 400px; width: 100%" class="ag-theme-alpine">
+      <ag-grid-angular
+        class="ag-theme-custom"
+        style="width: 100%; height: calc(100vh - 520px)"
+        [rowData]="listMonHocChuaGan"
+        [columnDefs]="columnDefsListSv"
+        [defaultColDef]="defaultColDefListSv"
+        [rowSelection]="'multiple'"
+        [suppressRowClickSelection]="true"
+        (gridReady)="onGridReady($event, 'gridSv')"
+        [overlayLoadingTemplate]="overlayLoadingTemplateSv"
+        [overlayNoRowsTemplate]="overlayNoRowsTemplateSv"
+        [components]="frameworkComponents"
+        [excelStyles]="excelStyles"
+      >
+      </ag-grid-angular>
+      <app-ag-grid-pagination [grid]="grid" [filter]="filterSv"></app-ag-grid-pagination>
+    </div>
+  </ng-template>
+
+  <ng-template #modalFooterAddSv>
+    <button nz-button nzType="primary" class="btn-primary" (click)="saveSv()"> <i nz-icon nzType="save" nzTheme="fill"></i>Thêm </button>
+    <button
+      nz-button
+      nzType="default"
+      class="btn-warning"
+      *ngIf="btnCancel.visible && btnCancel.grandAccess"
+      (click)="btnCancelAddSv.click($event)"
+    >
+      <i nz-icon nzType="close-circle" nzTheme="fill"></i>{{ btnCancel.title }}
+    </button>
+  </ng-template>
+</nz-modal>

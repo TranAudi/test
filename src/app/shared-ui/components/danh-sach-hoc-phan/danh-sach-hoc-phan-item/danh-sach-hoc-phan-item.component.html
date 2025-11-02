@@ -1,0 +1,123 @@
+<nz-modal
+  [(nzVisible)]="visible"
+  [nzTitle]="modalTitle"
+  [nzContent]="modalContent"
+  [nzFooter]="modalFooter"
+  nzMaskClosable="false"
+  nzWidth="500px"
+  (nzOnCancel)="handleCancel()"
+  [nzBodyStyle]="{ 'max-height': '80vh', 'overflow-y': 'auto' }"
+>
+  <ng-template #modalTitle> {{ tittle }} </ng-template>
+
+  <ng-template #modalContent [formGroup]="form">
+    <nz-col [nzXs]="24" [nzSm]="12" [nzMd]="6" [nzLg]="24">
+      <nz-form-item class="form-item-flex">
+        <nz-form-label nzFor="trinhDoDaoTao">{{ 'trinh-do-dt.modal.form.trinh-do-dao-tao.label' | i18n }}</nz-form-label>
+        <nz-form-control>
+          <nz-select
+            id="trinhDoDaoTao"
+            formControlName="trinhDoDaoTao"
+            name="trinhDoDaoTao"
+            nzPlaceHolder="{{ 'trinh-dt-tao.modal.form.trinh-do-dao-tao.place-holder' | i18n }}"
+          >
+            <nz-option *ngFor="let item of listHe" [nzLabel]="item.tenHe" [nzValue]="item.idHe"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+    <nz-col [nzXs]="24" [nzSm]="12" [nzMd]="6" [nzLg]="24">
+      <nz-form-item class="form-item-flex">
+        <nz-form-label nzFor="idMonHoc">{{ 'nhom-hp.modal.form.nhom-hoc-phan.label' | i18n }}</nz-form-label>
+        <nz-form-control>
+          <nz-select
+            id="idMonHoc"
+            formControlName="idMonHoc"
+            name="idMonHoc"
+            nzPlaceHolder="{{ 'nhom-hp.modal.form.nhom-hoc-phan.place-holder' | i18n }}"
+          >
+            <nz-option *ngFor="let item of listMonHoc" [nzLabel]="item.tenMon" [nzValue]="item.idMonHoc"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+    <nz-col [nzXs]="24" [nzSm]="12" [nzMd]="6" [nzLg]="24">
+      <nz-form-item class="form-item-flex">
+        <nz-form-label nzFor="kyHieu">{{ 'ky-hieu.modal.form.ky-hieu.label' | i18n }}</nz-form-label>
+        <nz-form-control>
+          <input
+            class="custom-input"
+            nz-input
+            id="kyHieu"
+            formControlName="kyHieu"
+            name="kyHieu"
+            placeholder="{{ 'ky-hieu.modal.form.ky-hieu.place-holder' | i18n }}"
+          />
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+    <nz-col [nzXs]="24" [nzSm]="12" [nzMd]="6" [nzLg]="24">
+      <nz-form-item class="form-item-flex">
+        <nz-form-label nzFor="tenMon">{{ 'ten-hoc-phan.modal.form.ten-hoc-phan.label' | i18n }}</nz-form-label>
+        <nz-form-control>
+          <input
+            class="custom-input"
+            nz-input
+            id="tenMon"
+            formControlName="tenMon"
+            name="tenMon"
+            placeholder="{{ 'ten-hoc-phan.modal.form.ten-hoc-phan.place-holder' | i18n }}"
+          />
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+    <nz-col [nzXs]="24" [nzSm]="12" [nzMd]="6" [nzLg]="24">
+      <nz-form-item class="form-item-flex">
+        <nz-form-label nzFor="tenTiengAnh">{{ 'ten-tieng-anh.modal.form.ten-tieng-anh.label' | i18n }}</nz-form-label>
+        <nz-form-control>
+          <input
+            class="custom-input"
+            nz-input
+            id="tenTiengAnh"
+            formControlName="tenTiengAnh"
+            name="tenTiengAnh"
+            placeholder="{{ 'ten-tieng-anh.modal.form.ten-tieng-anh.place-holder' | i18n }}"
+          />
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+    <nz-col [nzXs]="24" [nzSm]="12" [nzMd]="6" [nzLg]="24">
+      <nz-form-item class="form-item-flex">
+        <nz-form-label nzFor="idBoMon">{{ 'bo-mon.modal.form.bo-mon.label' | i18n }}</nz-form-label>
+        <nz-form-control>
+          <nz-select
+            id="idBoMon"
+            formControlName="idBoMon"
+            name="idBoMon"
+            nzPlaceHolder="{{ 'bo-mon.modal.form.bo-mon.place-holder' | i18n }}"
+          >
+            <nz-option *ngFor="let item of listBoMon" [nzLabel]="item.boMon" [nzValue]="item.idBoMon"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+  </ng-template>
+
+  <ng-template #modalFooter>
+    <button *ngIf="isAdd" nz-button nzType="primary" class="btn-primary" (click)="create()">
+      <i nz-icon nzType="save" nzTheme="fill"></i>{{ 'app.common.button.save' | i18n }}
+    </button>
+    <button *ngIf="isEdit" nz-button nzType="primary" class="btn-primary" (click)="edit(selectedId)">
+      <i nz-icon nzType="edit" nzTheme="fill"></i>{{ 'app.common.button.edit' | i18n }}
+    </button>
+    <button
+      nz-button
+      nzType="default"
+      class="btn-warning"
+      *ngIf="btnCancel.visible && btnCancel.grandAccess"
+      (click)="btnCancel.click($event)"
+    >
+      <i nz-icon nzType="close-circle" nzTheme="fill"></i>{{ btnCancel.title }}
+    </button>
+  </ng-template>
+</nz-modal>

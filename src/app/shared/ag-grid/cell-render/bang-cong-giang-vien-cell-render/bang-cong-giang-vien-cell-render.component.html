@@ -1,0 +1,18 @@
+<div class="cell-content" nz-row (mousemove)="onMouseMove()" (mouseleave)="onMouseLeave()">
+  <div> {{ params.value }} &nbsp;</div>
+  <div class="cell-content-button">
+    <a (click)="btnEditClickedHandler($event)"><span nz-icon nzType="edit" nzTheme="outline"></span></a>
+  </div>
+</div>
+<style>
+  .warp-content span {
+    text-align: center;
+  }
+  .warp-content {
+    height: 20px;
+  }
+  .cell-content {
+    display: flex;
+    justify-content: center;
+  }
+</style>

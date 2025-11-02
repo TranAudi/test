@@ -1,0 +1,245 @@
+.login-container {
+  height: 100vh;
+  background: linear-gradient(180deg, #eff3f8 10%, #eff3f8 55%, #eff3f8 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
+
+  .login-card {
+    width: 1000px;
+    border-radius: 25px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.6);
+  }
+
+  .login-row {
+    min-height: 420px;
+  }
+
+  .left-image {
+    max-width: 100%;
+    height: 100%;
+  }
+
+  .right-form {
+    padding: 30px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .logo-section {
+    text-align: center;
+    margin-bottom: 20px;
+
+    .logo-container {
+      margin-bottom: 16px;
+
+      .logo {
+        height: 64px;
+        width: auto;
+      }
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #6b7280;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.05em;
+    }
+  }
+
+  .error-message,
+  .success-message {
+    margin-bottom: 20px;
+  }
+
+  .form-item-account {
+    margin-bottom: 18px;
+  }
+
+  .form-item-password {
+    margin-bottom: 16px;
+  }
+
+  .input-container {
+    position: relative;
+
+    .input-icon {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(96, 165, 250, 1);
+      font-size: 16px;
+      z-index: 1;
+    }
+
+    .input-field {
+      height: 50px;
+      border-radius: 25px;
+      border: 2px solid #e5e7eb !important;
+      font-size: 14px;
+      background: #f9fafb !important;
+      width: 100%;
+      box-sizing: border-box;
+
+      &.account-input {
+        padding-left: 45px;
+        padding-right: 15px;
+      }
+
+      &.password-input {
+        padding-left: 45px;
+        padding-right: 45px;
+      }
+
+      &:focus {
+        border-color: #60a5fa !important;
+        box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.2) !important;
+        background: white !important;
+      }
+
+      &:hover {
+        border-color: #93c5fd !important;
+        background: white !important;
+      }
+    }
+
+    .eye-icon {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: rgba(96, 165, 250, 1);
+      font-size: 16px;
+      z-index: 1;
+    }
+  }
+
+  .remember-forgot {
+    margin-bottom: 32px;
+
+    .remember-checkbox {
+      color: #8c8c8c;
+    }
+
+    .forgot-link {
+      color: #1890ff;
+      font-size: 14px;
+    }
+  }
+
+  .login-button {
+    margin-bottom: 24px;
+
+    .btn-login {
+      height: 48px;
+      border-radius: 50px;
+      background: linear-gradient(135deg, #1890ff 0%, #096dd9 100%);
+      border: none;
+      font-size: 16px;
+      font-weight: 500;
+    }
+  }
+
+  .divider {
+    color: #bfbfbf;
+    font-size: 14px;
+  }
+
+  .google-section {
+    margin-bottom: 32px;
+
+    .google-icon {
+      width: 18px;
+      height: 18px;
+      margin-right: 8px;
+    }
+
+    .google-text {
+      color: #595959;
+      font-size: 16px;
+      font-weight: 700;
+    }
+  }
+
+  .language-section {
+    text-align: center;
+
+    .language-icon {
+      color: #bfbfbf;
+      margin-right: 8px;
+    }
+
+    .language-link {
+      color: #8c8c8c;
+      font-size: 14px;
+      cursor: pointer;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: #1890ff;
+      }
+
+      &.active {
+        color: #1890ff;
+        font-weight: 600;
+      }
+
+      &.vietnamese {
+        margin-right: 8px;
+      }
+
+      &.english {
+        margin-left: 8px;
+      }
+    }
+
+    .language-separator {
+      color: #d9d9d9;
+    }
+  }
+
+
+
+  .ant-btn-primary {
+    transition: all 0.3s ease;
+    
+    &:hover {
+      box-shadow: 0 4px 12px rgba(24, 144, 255, 0.3);
+    }
+      &:focus {
+      box-shadow: 0 0 0 1px rgba(185, 211, 235, 0.2);
+    }
+  }
+  
+
+
+  .google-btn {
+    transition: all 0.3s ease;
+    background: white;
+    height: 48px;
+    border-radius: 25px;
+    border: 1px solid #d9d9d9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 32px;
+
+    &:hover {
+      background: #f5f5f5;
+    }
+
+    &:focus {
+      background: #f0f9ff;
+      box-shadow: 0 0 0 1px  #dbe9f1;
+    }
+  }
+}

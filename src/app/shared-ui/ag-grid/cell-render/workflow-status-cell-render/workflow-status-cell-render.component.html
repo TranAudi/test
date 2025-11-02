@@ -1,0 +1,22 @@
+<div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px">
+  <nz-tag *ngIf="params.toActivity && params.value" [nzColor]="'#2db7f5'">
+    <!-- <i nz-icon nzType="exclamation-circle" nzTheme="fill"></i> -->
+    <span>{{ params.value }}</span>
+  </nz-tag>
+  <nz-tag *ngIf="!params.toActivity && params.value" [nzColor]="'#108ee9'">
+    <!-- <i nz-icon nzType="check" nzTheme="outline"></i> -->
+    <span>{{ params.value }}</span>
+  </nz-tag>
+  <!-- Container chứa các nút -->
+  <!-- <button
+    *ngFor="let item of params.data.commands"
+    nz-button
+    nzType="primary"
+    nzSize="small"
+    class="btn-secondary"
+    (click)="onProccessWorkflowClick(item.key)"
+    [title]="item.value"
+  >
+    {{ item.value }}
+  </button> -->
+</div>

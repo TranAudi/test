@@ -1,0 +1,91 @@
+<div class="login-container">
+  <nz-card [nzBodyStyle]="{ padding: '0px' }" class="login-card">
+    <nz-row [nzGutter]="0" class="login-row">
+      <nz-col class="hidden-mobile" nzXs="0" nzSm="0" nzMd="12" nzLg="12">
+        <img src="/assets/tmp/img/login_left.png" class="left-image" />
+      </nz-col>
+
+      <nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="12" class="right-form">
+        <div class="logo-section">
+          <div class="logo-container">
+            <img src="/assets/tmp/img/unisoft_logo.png" alt="Unisoft Logo" class="logo" />
+          </div>
+          <p class="subtitle">{{ i18n.fanyi('login.subtitle') }}</p>
+        </div>
+
+        <form nz-form [formGroup]="form" (ngSubmit)="submit()">
+          <div *ngIf="error" class="error-message">
+            <nz-alert nzType="error" [nzMessage]="error" nzShowIcon></nz-alert>
+          </div>
+
+          <div *ngIf="success" class="success-message">
+            <nz-alert nzType="success" [nzMessage]="success" nzShowIcon></nz-alert>
+          </div>
+
+          <nz-form-item class="form-item-account">
+            <nz-form-control [nzErrorTip]="i18n.fanyi('login.validation.required')">
+              <div class="input-container">
+                <i nz-icon nzType="user" class="input-icon"></i>
+                <input
+                  nz-input
+                  formControlName="userName"
+                  [placeholder]="i18n.fanyi('login.username.placeholder')"
+                  class="input-field account-input"
+                />
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+
+          <nz-form-item class="form-item-password">
+            <nz-form-control [nzErrorTip]="i18n.fanyi('login.validation.required')">
+              <div class="input-container">
+                <i nz-icon nzType="lock" class="input-icon"></i>
+                <input
+                  nz-input
+                  [type]="showPassword ? 'text' : 'password'"
+                  formControlName="password"
+                  [placeholder]="i18n.fanyi('login.password.placeholder')"
+                  class="input-field password-input"
+                />
+                <i nz-icon [nzType]="showPassword ? 'eye-invisible' : 'eye'" (click)="switchShowPass()" class="eye-icon"></i>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+
+          <nz-row [nzJustify]="'space-between'" class="remember-forgot">
+            <nz-col>
+              <label nz-checkbox formControlName="remember" class="remember-checkbox">{{ i18n.fanyi('login.remember-me') }}</label>
+            </nz-col>
+            <nz-col>
+              <a class="forgot-link" (click)="forgotPassword()">{{ i18n.fanyi('login.forgot-password') }}</a>
+            </nz-col>
+          </nz-row>
+
+          <nz-form-item class="login-button">
+            <button nz-button nzType="primary" nzBlock class="btn-login" [nzLoading]="isLoading">{{ i18n.fanyi('login.button') }}</button>
+          </nz-form-item>
+
+          <nz-divider *ngIf="isShowExternalLogin" [nzText]="i18n.fanyi('login.divider')" class="divider"></nz-divider>
+
+          <div *ngIf="isShowExternalLogin" class="google-section">
+            <button class="google-btn" nz-button nzBlock (click)="loginWithGoogle()" [nzLoading]="isLoading">
+              <img src="./assets/tmp/img/google-logo.svg" alt="Google" class="google-icon" />
+              <span class="google-text">{{ i18n.fanyi('login.google') }}</span>
+            </button>
+          </div>
+
+          <div class="language-section">
+            <i nz-icon nzType="global" class="language-icon"></i>
+            <a class="language-link vietnamese" [class.active]="currentLang === 'vi-VN'" (click)="switchLanguage('vi')">{{
+              i18n.fanyi('login.language.vi')
+            }}</a>
+            <span class="language-separator">|</span>
+            <a class="language-link english" [class.active]="currentLang === 'en-US'" (click)="switchLanguage('en')">{{
+              i18n.fanyi('login.language.en')
+            }}</a>
+          </div>
+        </form>
+      </nz-col>
+    </nz-row>
+  </nz-card>
+</div>

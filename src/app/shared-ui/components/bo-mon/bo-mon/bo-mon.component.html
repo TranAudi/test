@@ -1,0 +1,155 @@
+<ng-template #breadcrumb>
+  <nz-row>
+    <nz-col [nzXs]="24" [nzSm]="4" [nzMd]="4" [nzLg]="6">
+      <nz-breadcrumb>
+        <nz-breadcrumb-item> Danh mục </nz-breadcrumb-item>
+        <nz-breadcrumb-item><a routerLink="/hoc-phi-va-le-phi/bo-mon/">Bộ môn</a> </nz-breadcrumb-item>
+      </nz-breadcrumb>
+    </nz-col>
+    <nz-col [nzXs]="24" [nzSm]="20" [nzMd]="20" [nzLg]="18" [class.text-right]="true" class="margin-bottom-10">
+      <button class="button-danger" nz-button nzType="primary" (click)="onDeleteItem()">
+        <span nz-icon nzType="delete" nzTheme="fill"></span>
+        Xóa
+      </button>
+      <button class="button-success" nz-button nzType="primary" (click)="update()">
+        <span nz-icon nzType="edit" nzTheme="fill"></span>
+        Sửa
+      </button>
+      <button class="button-success" nz-button nzType="primary" class="btn-primary" (click)="createBoMon()">
+        <span nz-icon nzType="folder-add" nzTheme="fill"></span>
+        Thêm mới
+      </button>
+      <!-- <button nz-button nzType="primary" (click)="initGridData()">
+        <span nz-icon nzType="search"></span>
+        {{ 'liet-ke-danh-sach.model.button' | i18n }}
+      </button> -->
+      <!-- <button nz-button nzType="primary" (click)="btnAdd.click($event)" class="btn-primary" *ngIf="btnAdd.visible && btnAdd.grandAccess">
+        <i nz-icon nzType="file-add" nzTheme="fill"></i>{{ btnAdd.title }}
+      </button> -->
+    </nz-col>
+  </nz-row>
+</ng-template>
+
+<page-header-wrapper title="" [breadcrumb]="breadcrumb" [loading]="isLoadingPage">
+  <nz-card [nzBodyStyle]="{ padding: '10px' }" [nzBordered]="false">
+    <nz-card [nzBodyStyle]="{ padding: '2px' }" [nzBordered]="false">
+      <form nz-form (ngSubmit)="initGridData()" class="search__form" [formGroup]="form">
+        <nz-col [nzXs]="24" [nzSm]="24" [nzMd]="24" [nzLg]="24">
+          <nz-row nzGutter="16">
+            <nz-col [nzXs]="24" [nzSm]="8" [nzMd]="8" [nzLg]="8">
+              <nz-form-item class="form-item-flex">
+                <nz-form-label nzFor="boMon">Bộ môn</nz-form-label>
+                <nz-form-control>
+                  <nz-select
+                    nzShowSearch
+                    [nzAllowClear]="true"
+                    id="boMon"
+                    formControlName="boMon"
+                    (ngModelChange)="initGridData()"
+                    class="custom-select"
+                    name="boMon"
+                  >
+                    <nz-option *ngFor="let p of listBoMonCombobox" [nzValue]="p.idBoMon" [nzLabel]="p.boMon"></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </nz-col>
+
+            <nz-col [nzXs]="24" [nzSm]="8" [nzMd]="8" [nzLg]="8">
+              <nz-form-item class="form-item-flex">
+                <nz-form-label nzFor="monHoc">Môn học</nz-form-label>
+                <nz-form-control>
+                  <nz-select
+                    nzShowSearch
+                    [nzAllowClear]="true"
+                    id="monHoc"
+                    formControlName="monHoc"
+                    (ngModelChange)="initGridData()"
+                    class="custom-select"
+                    name="monHoc"
+                  >
+                    <nz-option *ngFor="let p of listMonHocCombobox" [nzValue]="p.idMonHoc" [nzLabel]="p.tenMon"></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </nz-col>
+            <nz-col [nzXs]="24" [nzSm]="8" [nzMd]="8" [nzLg]="8">
+              <nz-form-item class="form-item-flex">
+                <nz-form-label nzFor="giangVien">Giảng viên</nz-form-label>
+                <nz-form-control>
+                  <nz-select
+                    nzShowSearch
+                    [nzAllowClear]="true"
+                    id="giangVien"
+                    formControlName="giangVien"
+                    (ngModelChange)="initGridData()"
+                    class="custom-select"
+                    name="giangVien"
+                  >
+                    <nz-option *ngFor="let p of listGiangVienCombobox" [nzValue]="p.idCb" [nzLabel]="p.tenGiangVien"></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </nz-col>
+          </nz-row>
+        </nz-col>
+      </form>
+    </nz-card>
+  </nz-card>
+  <nz-row>
+    <ag-grid-angular
+      #agGrid
+      class="ag-theme-custom"
+      style="width: 100%; height: calc(100vh - 100px)"
+      [rowData]="grid.rowData"
+      [columnDefs]="columnDefs"
+      [defaultColDef]="defaultColDef"
+      [rowSelection]="'multiple'"
+      [suppressRowClickSelection]="true"
+      (gridReady)="onGridReady($event)"
+      (selectionChanged)="onSelectionChanged($event)"
+      (cellDoubleClicked)="onCellDoubleClicked($event)"
+      [overlayLoadingTemplate]="overlayLoadingTemplate"
+      [overlayNoRowsTemplate]="overlayNoRowsTemplate"
+      [components]="frameworkComponents"
+      [excelStyles]="excelStyles"
+    >
+    </ag-grid-angular>
+    <hr />
+  </nz-row>
+  <app-ag-grid-pagination
+    [grid]="grid"
+    [filter]="filter"
+    [pageSizeOptions]="pageSizeOptions"
+    (pageNumberChange)="onPageNumberChange()"
+    (pageSizeChange)="onPageSizeChange()"
+  ></app-ag-grid-pagination>
+</page-header-wrapper>
+
+<app-mon-hoc
+  #itemModalMonHoc
+  [isVisible]="modalMonHoc.isShow"
+  [item]="modalMonHoc.item"
+  [type]="modalMonHoc.type"
+  [option]="modalMonHoc.option"
+  (eventEmmit)="onModalEventEmmitMonHoc($event)"
+>
+</app-mon-hoc>
+<app-giao-vien
+  #itemModalGiaoVien
+  [isVisible]="modalGiaoVien.isShow"
+  [item]="modalGiaoVien.item"
+  [type]="modalGiaoVien.type"
+  [option]="modalGiaoVien.option"
+  (eventEmmit)="onModalEventEmmitGv($event)"
+>
+</app-giao-vien>
+<app-bo-mon-item
+  #itemModalBoMonItem
+  [isVisible]="modalBoMon.isShow"
+  [item]="modalBoMon.item"
+  [type]="modalBoMon.type"
+  [option]="modalBoMon.option"
+  (eventEmmit)="onModalEventEmmitBm($event)"
+>
+</app-bo-mon-item>

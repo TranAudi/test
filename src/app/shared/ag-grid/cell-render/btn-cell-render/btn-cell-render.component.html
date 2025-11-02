@@ -1,0 +1,144 @@
+<style>
+  .img-button {
+    height: 17px;
+    margin-right: 5px;
+    cursor: pointer;
+  }
+
+  .img-button :hover {
+    cursor: pointer;
+  }
+</style>
+<button
+  nz-button
+  nzType="primary"
+  *ngIf="params.data.infoGrantAccess"
+  nzShape="circle"
+  class="btn-info"
+  (click)="btnInfoClickedHandler($event)"
+  title="Chi tiết"
+>
+  <i nz-icon nzType="info" nzTheme="outline"></i>
+</button>
+
+<button
+  nz-button
+  nzType="primary"
+  nzShape="circle"
+  class="btn-secondary"
+  *ngIf="params.data.editGrantAccess"
+  (click)="btnEditClickedHandler($event)"
+  title="Cập nhật"
+>
+  <i nz-icon nzType="edit" nzTheme="outline"></i>
+</button>
+
+<button
+  nz-button
+  nzType="primary"
+  nzShape="circle"
+  class="btn-secondary"
+  *ngIf="params.data.assignClassGrantAccess"
+  (click)="btnAssignClassClickedHandler($event)"
+  title="Gán lớp quản lý"
+>
+  <i nz-icon nzType="usergroup-add" nzTheme="outline"></i>
+</button>
+
+<button
+  nz-button
+  nzType="primary"
+  nzShape="circle"
+  nzDanger
+  *ngIf="params.data.deleteGrantAccess"
+  (click)="btnDeleteClickedHandler($event)"
+  title="Xóa"
+>
+  <i nz-icon nzType="delete" nzTheme="outline"></i>
+</button>
+
+<button
+  nz-button
+  nzType="primary"
+  nzShape="circle"
+  nzDanger
+  *ngIf="params.data.sendMailForgotPasswordGrantAccess"
+  (click)="btnSendMailForgotPasswordClickedHandler($event)"
+  title="Gửi mail"
+>
+  <i nz-icon nzType="mail" nzTheme="outline"></i>
+</button>
+
+<button
+  nz-button
+  nzType="primary"
+  nzShape="circle"
+  class="btn-secondary"
+  *ngIf="params.data.addUserRoleGrantAccess"
+  (click)="btnAddUserRoleClickedHandler($event)"
+  title="Phân quyền nhóm người dùng"
+>
+  <i nz-icon nzType="idcard" nzTheme="outline"></i>
+</button>
+
+<!-- <img
+  class="img-button"
+  src="../../../../../assets/tmp/icon/user-role.svg"
+  *ngIf="params.data.addUserRoleGrantAccess"
+  (click)="btnAddUserRoleClickedHandler($event)"
+  alt="Phân quyền nhóm người dùng"
+  title="Phân quyền nhóm người dùng"
+/> -->
+
+<button
+  nz-button
+  nzType="primary"
+  nzShape="circle"
+  class="btn-secondary"
+  *ngIf="params.data.userGroupAddGrantAccess"
+  (click)="btnUpdateUserRole($event)"
+  title="Phân quyền người dùng"
+>
+  <i nz-icon nzType="usergroup-add" nzTheme="outline"></i>
+</button>
+
+<!-- <img
+  class="img-button"
+  src="../../../../../assets/tmp/icon/user-grant.svg"
+  *ngIf="params.data.userGroupAddGrantAccess"
+  (click)="btnUpdateUserRole($event)"
+  alt="Danh sách người dùng"
+  title="Phân quyền người dùng"
+/> -->
+
+<button
+  nz-button
+  nzType="primary"
+  nzShape="circle"
+  class="btn-secondary"
+  *ngIf="params.data.addPermissionGrantAccess"
+  (click)="btnAddPermissionClickedHandler($event)"
+  title="Phân quyền chức năng"
+>
+  <i nz-icon nzType="partition" nzTheme="outline"></i>
+</button>
+
+<!-- <img
+  class="img-button"
+  src="../../../../../assets/tmp/icon/right.svg"
+  *ngIf="params.data.addPermissionGrantAccess"
+  (click)="btnAddPermissionClickedHandler($event)"
+  alt="Phân quyền chức năng"
+  title="Phân quyền chức năng"
+/> -->
+
+<button
+  nz-button
+  nzType="primary"
+  nzShape="circle"
+  *ngIf="params.data.syncDataGrantAccess"
+  (click)="btnSyncDataClickedHandler($event)"
+  title="Đồng bộ dữ liệu"
+>
+  <i nz-icon nzType="sync" nzTheme="outline"></i>
+</button>

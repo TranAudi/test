@@ -1,0 +1,58 @@
+<nz-modal
+  [(nzVisible)]="isVisible"
+  [nzTitle]="modalTitle"
+  [nzContent]="modalContent"
+  [nzFooter]="modalFooter"
+  nzMaskClosable="false"
+  nzWidth="500px"
+  (nzOnCancel)="handleCancel()"
+  [nzBodyStyle]="{ 'max-height': '80vh', 'overflow-y': 'auto' }"
+>
+  <ng-template #modalTitle>
+    <nz-row>
+      <nz-col [nzXs]="24" [nzSm]="24" [nzMd]="24" [nzLg]="24">
+        <nz-row>
+          <nz-col [nzXs]="16" [nzSm]="16" [nzMd]="16" [nzLg]="18"> {{ tittle }}</nz-col>
+        </nz-row>
+      </nz-col>
+    </nz-row>
+  </ng-template>
+
+  <ng-template #modalContent>
+    <form nz-form [formGroup]="form" (ngSubmit)="save()">
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="MaBoMon">Mã bộ môn</nz-form-label>
+        <nz-form-control [nzSm]="17" [nzXs]="24" nzErrorTip="Mã bộ môn không được để trống">
+          <input nz-input formControlName="maBoMon" id="MaBoMon" placeholder="Nhập Mã bộ môn" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="TenBoMon">Tên bộ môn</nz-form-label>
+        <nz-form-control [nzSm]="17" [nzXs]="24" nzErrorTip="Tên bộ môn không được để trống">
+          <input nz-input formControlName="tenBoMon" id="TenBoMon" placeholder="Nhập tên bộ môn" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="SoNhom">Số nhóm</nz-form-label>
+        <nz-form-control [nzSm]="17" [nzXs]="24">
+          <input nz-input type="number" formControlName="soNhom" id="SoNhom" placeholder="Nhập số nhóm" />
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </ng-template>
+  <ng-template #modalFooter>
+    <button nz-button nzType="primary" class="btn-primary" (click)="saveBoMonItem()">
+      <i nz-icon nzType="save" nzTheme="fill"></i>Lưu
+    </button>
+    <button
+      nz-button
+      nzType="default"
+      class="btn-warning"
+      *ngIf="btnCancel.visible && btnCancel.grandAccess"
+      (click)="btnCancel.click($event)"
+    >
+      <i nz-icon nzType="close-circle" nzTheme="fill"></i>{{ btnCancel.title }}
+    </button>
+  </ng-template>
+</nz-modal>

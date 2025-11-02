@@ -1,0 +1,313 @@
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.page-login-container {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     height: 100%;
+      
+    background: linear-gradient(to bottom right, #f7f8fc, #e4e9f2);
+
+}
+
+.login-container {
+    display: flex;
+    width: 100vw;
+    height: 100%;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    overflow: auto;
+
+}
+
+
+.image-container {
+  width: 77vw;
+  height: 100vh; /* hoặc giá trị phù hợp với chiều cao bạn muốn */
+  background-image: url('/assets/tmp/img/bg-login.jpg');
+  background-size: 100% 100%;    
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+    .form-login {
+      width: 23vw;
+    } 
+
+.login-form-container-content {
+    padding: 0 60px;
+}
+
+.style-logo-thienan{
+  display: flex;
+justify-content: center;
+margin-top: 70px;
+}
+
+.img-logon-thienan {
+    width: 230px;
+    // height: 15vh;
+}
+
+
+.login100-form-title {
+    display: block;
+    width: 100%;
+    color: #333;
+    font-size: 30px;
+    font-family: Arial, sans-serif;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.item-center {
+  display: flex;
+flex-direction: column;
+justify-content: space-around;
+align-items: center;
+}
+
+
+.title-login{
+  display: flex;
+justify-content: center;
+}
+
+.label_login {
+    font-family: Arial;
+    font-weight: 500 !important;
+    font-size: 17px;
+    margin-bottom: 0 !important;
+    margin-left: 8px;
+}
+
+.login-group {
+    margin-top: 30px;
+}
+
+.input-group-control {
+    border-radius: 10px !important;
+    padding: 8px 8px 8px 30px;
+    font-size: 14px;
+    border: 1px solid #ebe8e8;
+    border-radius: 5px;
+    box-sizing: border-box;
+    position: absolute;
+    background-clip: padding-box !important;
+    width: 100%;
+    flex: 1;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: white;
+    height: 44px;
+    font-family: Arial;
+}
+
+    .input-group-control:focus {
+        border-color: #6675df; /* màu tím khi focus */
+    }
+
+
+    .form-input-login{
+      border-radius: 12px;
+      height: 45px;
+    }
+
+.checkbox-row {
+  // display: flex;
+  // justify-content: space-between;
+  // align-items: center;
+}
+
+.forgot-password {
+  font-size: 14px;
+  color: #1890ff;
+  width: 100%;
+  text-align: right;
+  margin-top: -10px;
+  margin-bottom: 20px;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+
+.form-button {
+    width: 100%;
+    height: 44px;
+    padding: 8px 12px; /* Reduced padding */
+    background-color: #6675df;
+    color: white;
+    font-size: 14px; /* Reduced font size */
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.form-button:hover {
+  background-color: #0958d9; /* Màu khi hover */
+  border-color: #0958d9;
+}
+
+.divider {
+    margin: 50px 0;
+    display: flex;
+    align-items: center;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background-color: #ddd;
+}
+
+.divider span {
+  margin: 0 10px;
+  font-size: 16px;
+  color: #6b6b6b;
+}
+
+
+.sign-google{
+display: flex;
+justify-content: center;
+width: 100%;
+gap: 20px; 
+    margin-top: -50px;
+}
+
+.btn-google {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px; 
+  border: 2px solid #d4d7da; 
+  font-size: 18px;
+  color: #718096;
+  background-color: #fff;
+  margin-top: 40px;
+  transition: border-color 0.2s ease;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+
+.google-icon {
+  position: absolute;
+  height: 40px;
+  width: auto;
+}
+
+
+
+.btn-google:focus {
+  outline: none;
+  border-color: #e9ecf0; /* hoặc bất kỳ màu nào bạn muốn */
+}
+
+.btn-google:active {
+  border-color: #718096;
+}
+.btn-google:hover {
+  background-color: #ebeef1; /* đổi màu nền */
+  border-color: #e9ecf0;     /* đổi màu viền để đồng bộ */
+  cursor: pointer;           /* bàn tay khi hover */
+}
+
+
+.btn-micr {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px; 
+  border: 2px solid #d4d7da; 
+  font-size: 18px;
+  color: #718096;
+  background-color: #fff;
+  margin-top: 40px;
+  transition: border-color 0.2s ease;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+
+.micr-icon {
+  position: absolute;
+  height: 30px;
+  width: auto;
+}
+
+@media (max-width: 1366px) {
+    .image-container {
+        width: 50vw;
+    }
+
+    .style-logo-thienan {
+        margin-top: 15vw;
+    }
+
+    .login-form-container {
+        width: 50vw;
+    }
+}
+
+@media (max-width: 992px) {
+    .image-container {
+        display: none;
+    }
+
+    .login-form-container {
+        width: 100vw;
+    }
+
+    .social-login {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 770px) {
+    .image-container {
+        display: none;
+    }
+     .login-form-container-content {
+      width: 100vw;
+    } 
+    .login-form-container-content {
+    padding: 0 30px;
+}
+
+
+     .form-login {
+      width: 100%;
+    } 
+
+    .login-form-container {
+        width: 100vw;
+    }
+
+        .login-form-container .login-form-container-content {
+            width: 85vw;
+        }
+
+    .login100-form-title {
+        font-size: 26px !important;
+        ;
+    }
+}
+
+
+
+
+

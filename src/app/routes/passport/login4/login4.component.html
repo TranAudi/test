@@ -1,0 +1,70 @@
+<div class="page-login-container">
+  <div class="login-container">
+    <div class="image-container"> </div>
+    <div class="login-form-container-content">
+      <div class="font-logo-unisoft item-center">
+        <div class="style-logo-thienan">
+          <img class="img-logon-thienan" src="/assets/tmp/img/thienan-logo.png" alt="" />
+        </div>
+      </div>
+      <form nz-form [formGroup]="form" class="form-login" (ngSubmit)="submit()" role="form">
+        <div nz-row class="title-login text-center">
+          <span class="login100-form-title" id="title-text-two">{{ 'form.login.title.authentic' | i18n }}</span>
+        </div>
+        <nz-alert *ngIf="error" [nzType]="'error'" [nzMessage]="error" [nzShowIcon]="true" class="mb-lg"></nz-alert>
+        <div class="login-group">
+          <nz-form-item>
+            <nz-form-control [nzSpan]="24" [nzErrorTip]="'identity card number.required' | i18n">
+              <label class="label_login">{{ 'form.login.label' | i18n }}</label>
+              <nz-input-group class="form-input-login" nzSize="large" nzPrefixIcon="user">
+                <input nz-input formControlName="userName" placeholder="{{ 'form.login.placeholder' | i18n }}" />
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-control [nzSpan]="24" [nzErrorTip]="'password-login.required' | i18n">
+              <label class="label_login">{{ 'form.password.label' | i18n }}</label>
+              <nz-input-group class="form-input-login" nzSize="large" nzPrefixIcon="lock" [nzSuffix]="suffixIconShowHide">
+                <input nz-input [type]="typePassword" formControlName="password" placeholder="{{ 'form.login.required' | i18n }}" />
+              </nz-input-group>
+              <ng-template #suffixIconShowHide>
+                <span (click)="switchShowPass()" *ngIf="!showPassword"><i nz-icon nzType="eye" nzTheme="outline"></i></span>
+                <span (click)="switchShowPass()" *ngIf="showPassword"><i nz-icon nzType="eye-invisible" nzTheme="outline"></i></span>
+              </ng-template>
+            </nz-form-control>
+          </nz-form-item>
+
+          <div class="forgot-password">
+            <a asp-page="/Account/ForgotPassword/Index" asp-route-returnUrl="@Model.Input.ReturnUrl">{{
+              'form.forgot-password.label' | i18n
+            }}</a>
+          </div>
+
+          <div nz-row class="text-center">
+            <button nz-button type="submit" nzType="primary" nzSize="large" [nzLoading]="isLoading" nzBlock class="form-button">
+              {{ 'app.login.login' | i18n }}
+            </button>
+          </div>
+
+          <div *ngIf="signGoogle">
+            <div class="divider">
+              <span>Đăng nhập bằng</span>
+            </div>
+            <div class="sign-google">
+              <div>
+                <button type="button" class="btn-google">
+                  <img src="/assets/tmp/img/google.png" class="google-icon" alt="Google" title="Đăng nhập với Google" />
+                </button>
+              </div>
+              <div>
+                <button type="button" class="btn-micr">
+                  <img src="/assets/tmp/img/microsoft.png" class="micr-icon" alt="Microsoft" title="Đăng nhập với Microsoft" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

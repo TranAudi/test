@@ -1,0 +1,14 @@
+<nz-row style="margin-right: 6px">
+  <button
+    *ngFor="let item of lstCommand"
+    nz-button
+    nzType="primary"
+    nzSize="default"
+    class="button-info"
+    (click)="onProccessWorkflowItem(item.key, item.params)"
+    [title]="item.value"
+  >
+    {{ item.value }}
+  </button>
+</nz-row>
+<shared-send-comment-workflow #itemModal (eventEmmit)="onModalSendCommentEventEmmit($event)"></shared-send-comment-workflow>

@@ -1,0 +1,12 @@
+{
+  "app": {
+    "name": "UniSystem",
+    "description": "Phân hệ quản trị hệ thống UniSoft",
+    "year": "2025"
+  },
+  "user": {
+    "name": "ThienAn",
+    "avatar": "./assets/tmp/img/avatar.png",
+    "email": "admin@thienan.vn"
+  }
+}

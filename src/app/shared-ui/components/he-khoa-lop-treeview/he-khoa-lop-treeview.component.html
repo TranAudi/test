@@ -1,0 +1,21 @@
+<p>{{ title }}</p>
+<nz-tree-view [nzTreeControl]="treeControl" [nzDataSource]="dataSource">
+  <nz-tree-node *nzTreeNodeDef="let node" nzTreeNodeIndentLine>
+    <nz-tree-node-option (nzClick)="onTreeNodeClick($event, node)">
+      <span nz-icon nzType="container" nzTheme="outline"></span> {{ node.name }}
+    </nz-tree-node-option>
+  </nz-tree-node>
+
+  <nz-tree-node *nzTreeNodeDef="let node; when: hasChild" nzTreeNodeIndentLine>
+    <nz-tree-node-toggle>
+      <span nz-icon [nzType]="treeControl.isExpanded(node) ? 'minus-square' : 'plus-square'" nzTheme="outline"></span>
+    </nz-tree-node-toggle>
+    <nz-tree-node-option (nzClick)="onTreeNodeClick($event, node)">
+      <span nz-icon nzType="appstore" nzTheme="outline" *ngIf="node.level === 0"></span>
+      <span nz-icon nzType="partition" nzTheme="outline" *ngIf="node.level === 1"></span>
+      <span nz-icon nzType="experiment" nzTheme="outline" *ngIf="node.level === 2"></span>
+      <span nz-icon nzType="project" nzTheme="outline" *ngIf="node.level === 3"></span>
+      {{ node.name }}
+    </nz-tree-node-option>
+  </nz-tree-node>
+</nz-tree-view>

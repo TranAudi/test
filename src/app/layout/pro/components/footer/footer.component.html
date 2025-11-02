@@ -1,0 +1,8 @@
+<global-footer>
+  {{ 'footer-copyright' | i18n }}
+  <i nz-icon nzType="copyright"></i>
+  {{ year }}
+  |
+  <a href="{{ 'footer-url' | i18n }}" target="_blank"> {{ 'footer-name' | i18n }} </a>
+  | {{ version }} | {{ build * 1000 | date : 'yyyy-MM-dd HH:mm:ss' }}
+</global-footer>

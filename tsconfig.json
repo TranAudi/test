@@ -1,0 +1,54 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "es2020",
+    "lib": [
+      "es2020",
+      "dom"
+    ],
+    "paths": {
+      "@shared-ui": [
+        "src/app/shared-ui/index"
+      ],
+      "@shared": [
+        "src/app/shared/index"
+      ],
+      "@core": [
+        "src/app/shared-ui/core/index"
+      ],
+      "@env/*": [
+        "src/environments/*"
+      ],
+      "@brand": [
+        "src/app/layout/pro/index"
+      ],
+      "@service": ["src/app/services/index"],
+      "@shared-service": ["src/app/shared-ui/services/index.ts"],
+      "@util": ["src/app/utils/index"],
+      "@model": ["src/app/models/index"]
+    },
+    "allowSyntheticDefaultImports": true,
+    "useDefineForClassFields": false
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  }
+}

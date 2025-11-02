@@ -1,0 +1,70 @@
+<nz-row [nzGutter]="[16]">
+  <nz-col [nzXl]="colSpan" [nzLg]="colSpan" [nzMd]="colSpan" [nzSm]="colSpan" [nzXs]="24">
+    <form nz-form>
+      <nz-form-item class="form-item-flex">
+        <nz-form-label>Hệ</nz-form-label>
+        <nz-form-control>
+          <nz-select [(ngModel)]="idHe" (ngModelChange)="onHeChange($event)" nzShowSearch [ngModelOptions]="{ standalone: true }">
+            <nz-option *ngFor="let option of listHe" [nzLabel]="option.he" [nzValue]="option.idHe"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </nz-col>
+  <nz-col [hidden]="isHiddenKhoa" [nzXl]="colSpan" [nzLg]="colSpan" [nzMd]="colSpan" [nzSm]="colSpan" [nzXs]="24">
+    <nz-form-item class="form-item-flex">
+      <nz-form-label>Khoa</nz-form-label>
+      <nz-form-control>
+        <nz-select [(ngModel)]="idKhoa" (ngModelChange)="onKhoaChange($event)" nzShowSearch [ngModelOptions]="{ standalone: true }">
+          <nz-option *ngFor="let option of listKhoa" [nzLabel]="option.khoa" [nzValue]="option.idKhoa"></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+  </nz-col>
+
+  <!-- <nz-col [nzXl]="24" [nzLg]="4" [nzMd]="4" [nzSm]="4" [nzXs]="4">
+      <nz-form-item class="form-item-flex">
+        <nz-form-label>Khoa</nz-form-label>
+        <nz-form-control>
+          <nz-select [(ngModel)]="nienKhoa" (ngModelChange)="onKhoaHocChange($event)" nzShowSearch [ngModelOptions]="{ standalone: true }">
+            <nz-option *ngFor="let option of listKhoaHoc" [nzLabel]="option.nienKhoa" [nzValue]="option.nienKhoa"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col> -->
+  <nz-col [hidden]="isHiddenKhoaHoc" [nzXl]="colSpanMid" [nzLg]="colSpanMid" [nzMd]="colSpanMid" [nzSm]="colSpanMid" [nzXs]="24">
+    <nz-form-item class="form-item-flex">
+      <nz-form-label>Khóa</nz-form-label>
+      <nz-form-control>
+        <nz-select [(ngModel)]="khoaHoc" (ngModelChange)="onKhoaHocChange($event)" nzShowSearch [ngModelOptions]="{ standalone: true }">
+          <nz-option *ngFor="let option of listKhoaHoc" [nzLabel]="option.khoaHoc" [nzValue]="option.khoaHoc"></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+  </nz-col>
+  <nz-col [hidden]="isHiddenChuyenNganh" [nzXl]="colSpan" [nzLg]="colSpan" [nzMd]="colSpan" [nzSm]="colSpan" [nzXs]="24">
+    <nz-form-item class="form-item-flex">
+      <nz-form-label>C.Ngành</nz-form-label>
+      <nz-form-control>
+        <nz-select
+          [(ngModel)]="idChuyenNganh"
+          (ngModelChange)="onChuyenNganhChange($event)"
+          nzShowSearch
+          [ngModelOptions]="{ standalone: true }"
+        >
+          <nz-option *ngFor="let option of listChuyenNganh" [nzLabel]="option.chuyenNganh" [nzValue]="option.idChuyenNganh"></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+  </nz-col>
+  <nz-col [hidden]="isHiddenLop" [nzXl]="colSpan" [nzLg]="colSpan" [nzMd]="colSpan" [nzSm]="colSpan" [nzXs]="24">
+    <nz-form-item class="form-item-flex">
+      <nz-form-label>Lớp</nz-form-label>
+      <nz-form-control>
+        <nz-select [(ngModel)]="idLop" (ngModelChange)="onLopChange($event)" nzShowSearch [ngModelOptions]="{ standalone: true }">
+          <nz-option *ngFor="let option of listLop" [nzLabel]="option.tenLop" [nzValue]="option.idLop"></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+  </nz-col>
+</nz-row>

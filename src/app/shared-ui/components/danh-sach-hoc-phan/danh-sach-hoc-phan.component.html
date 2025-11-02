@@ -1,0 +1,146 @@
+<ng-template #breadcrumb>
+  <nz-row>
+    <nz-col [nzXs]="24" [nzSm]="12" [nzMd]="6" [nzLg]="8">
+      <nz-breadcrumb>
+        <nz-breadcrumb-item
+          ><a routerLink="/chuong-trinh-dao-tao/danh-sach-hoc-phan">{{ 'danh-sach-hoc-phan.breadcrumb.danh-sach-hoc-phan' | i18n }}</a>
+        </nz-breadcrumb-item>
+      </nz-breadcrumb>
+    </nz-col>
+
+    <nz-col [nzXs]="24" [nzSm]="18" [nzMd]="20" [nzLg]="16" [nzXl]="24" [nzXXl]="16" [class.text-right]="true" class="margin-bottom-10">
+      <button class="button-success" nz-button nzType="primary" (click)="btnCreate.click({ event: $event })">
+        <span nz-icon nzType="save" nzTheme="fill"></span>
+        {{ 'danh-sach-hoc-phan.modal.add-danh-sach-hoc-phan' | i18n }}
+      </button>
+      <button class="button-success" nz-button nzType="primary" (click)="btnEdit.click({ event: $event })">
+        <span nz-icon nzType="edit" nzTheme="fill"></span>
+        {{ 'danh-sach-hoc-phan.modal.edit-danh-sach-hoc-phan' | i18n }}
+      </button>
+      <button class="button-danger" nz-button nzType="primary" nzDanger (click)="delete()">
+        <span nz-icon nzType="delete" nzTheme="outline"></span>
+        {{ 'app.common.button.delete' | i18n }}
+      </button>
+      <!-- <button class="button-info" nz-button nzType="primary" [nzLoading]="isLoadingExport">
+        <span nz-icon nzType="file-excel" nzTheme="fill"></span>
+        {{ 'app.common.button.export-excel' | i18n }}
+      </button> -->
+      <button nz-button nzType="primary" (click)="initGridData()" [nzLoading]="isLoading">
+        <span nz-icon nzType="search"></span>
+        {{ 'app.common.button.search' | i18n }}
+      </button>
+    </nz-col>
+  </nz-row>
+</ng-template>
+
+<page-header-wrapper [breadcrumb]="breadcrumb" title="" [loading]="isLoading">
+  <nz-card [nzBordered]="false" [nzBodyStyle]="{ padding: '10px 15px 0px 15px' }">
+    <form nz-form class="search__form" [formGroup]="form">
+      <div nz-row nzGutter="16">
+        <nz-col [nzXs]="24" [nzSm]="12" [nzMd]="8" [nzLg]="6">
+          <nz-form-item class="form-item-flex">
+            <nz-form-label nzFor="kyHieu">{{ 'ky-hieu.modal.form.ky-hieu.label' | i18n }}</nz-form-label>
+            <nz-form-control>
+              <input
+                class="custom-input"
+                nz-input
+                id="kyHieu"
+                formControlName="kyHieu"
+                (ngModelChange)="initGridData()"
+                name="Ky-hieu"
+                placeholder="{{ 'ky-hieu.modal.form.ky-hieu.place-holder' | i18n }}"
+              />
+            </nz-form-control>
+          </nz-form-item>
+        </nz-col>
+
+        <nz-col [nzXs]="24" [nzSm]="12" [nzMd]="8" [nzLg]="6">
+          <nz-form-item class="form-item-flex">
+            <nz-form-label nzFor="tenMon">{{ 'ten-hoc-phan.modal.form.ten-hoc-phan.label' | i18n }}</nz-form-label>
+            <nz-form-control>
+              <input
+                class="custom-input"
+                nz-input
+                id="tenMon"
+                (ngModelChange)="initGridData()"
+                formControlName="tenMon"
+                name="Ten-mon"
+                placeholder="{{ 'ten-hoc-phan.modal.form.ten-hoc-phan.place-holder' | i18n }}"
+              />
+            </nz-form-control>
+          </nz-form-item>
+        </nz-col>
+
+        <nz-col [nzXs]="24" [nzSm]="12" [nzMd]="8" [nzLg]="6">
+          <nz-form-item class="form-item-flex">
+            <nz-form-label nzFor="trinhDoDaoTao">{{ 'trinh-do-dao-tao.modal.form.trinh-do-dao-tao.label' | i18n }}</nz-form-label>
+            <nz-form-control>
+              <nz-select
+                id="trinhDoDaoTao"
+                formControlName="trinhDoDaoTao"
+                name="trinhDoDaoTao"
+                nzPlaceHolder="{{ 'trinh-do-dao-tao.modal.form.trinh-do-dao-tao.place-holder' | i18n }}"
+              >
+                <nz-option *ngFor="let item of listHe" [nzLabel]="item.tenHe" [nzValue]="item.idHe"></nz-option>
+              </nz-select>
+            </nz-form-control>
+          </nz-form-item>
+        </nz-col>
+
+        <nz-col [nzXs]="24" [nzSm]="12" [nzMd]="8" [nzLg]="6">
+          <nz-form-item class="form-item-flex">
+            <nz-form-label nzFor="idMonHoc">{{ 'nhom-hoc-phan.modal.form.nhom-hoc-phan.label' | i18n }}</nz-form-label>
+            <nz-form-control>
+              <nz-select
+                id="idMonHoc"
+                formControlName="idMonHoc"
+                name="idBoMon"
+                nzPlaceHolder="{{ 'nhom-hoc-phan.modal.form.nhom-hoc-phan.place-holder' | i18n }}"
+              >
+                <nz-option *ngFor="let item of listMonHoc" [nzLabel]="item.tenMon" [nzValue]="item.idMonHoc"></nz-option>
+              </nz-select>
+            </nz-form-control>
+          </nz-form-item>
+        </nz-col>
+      </div>
+    </form>
+  </nz-card>
+  <nz-row [nzGutter]="6">
+    <nz-col [nzXs]="20" [nzSm]="20" [nzMd]="20" [nzLg]="19" [nzXl]="24" [nzXXl]="24">
+      <ag-grid-angular
+        style="width: 100%; height: 70vh"
+        class="ag-theme-custom"
+        [rowData]="grid.rowData"
+        [columnDefs]="columnDefs"
+        [defaultColDef]="defaultColDef"
+        [components]="frameworkComponents"
+        [gridOptions]="gridOptions"
+        (gridReady)="onGridReady($event)"
+        [autoGroupColumnDef]="autoGroupColumnDef"
+        [sideBar]="sideBar"
+        [suppressRowClickSelection]="true"
+        rowSelection="multiple"
+        [overlayLoadingTemplate]="overlayLoadingTemplate"
+        [overlayNoRowsTemplate]="overlayNoRowsTemplate"
+      >
+      </ag-grid-angular>
+      <app-ag-grid-pagination
+        [grid]="grid"
+        [filter]="filter"
+        [pageSizeOptions]="pageSizeOptions"
+        (pageNumberChange)="onPageNumberChange()"
+        (pageSizeChange)="onPageSizeChange()"
+      ></app-ag-grid-pagination>
+    </nz-col>
+  </nz-row>
+</page-header-wrapper>
+
+<app-danh-sach-hoc-phan-item
+  #itemModal2
+  [visible]="visible.isShow"
+  [item]="visible.item"
+  [type]="visible.type"
+  [option]="visible.option"
+  (eventEmmit)="onModalEventEmmit2($event)"
+>
+</app-danh-sach-hoc-phan-item>
